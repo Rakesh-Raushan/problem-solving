@@ -1,0 +1,32 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # from collections import Counter
+
+        # count_map = Counter(nums)
+
+        # maxheap = []
+
+        # # for num, num_count in count_map.items():
+        # #     val = (-1*num_count, num)
+        # #     heapq.heappush(maxheap, val)
+        # maxheap = [(-1*count, val) for val, count in count_map.items()]
+        # heapq.heapify(maxheap)
+        
+        # result = []
+
+        # for i in range(k):
+        #     result.append(heapq.heappop(maxheap)[1])
+        
+        # return result
+        from collections import Counter
+        counter = Counter(nums)
+        maxheap = []
+        for num, count in counter.items():
+            heapq.heappush(maxheap, (-1*count,num))
+        result = []
+        for i in range(k):
+            result.append(heapq.heappop(maxheap)[1])
+        return result
+
+
+        
